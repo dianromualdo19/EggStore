@@ -12,16 +12,8 @@ require_once 'Inventory.php';
 $database = new Database();
 $db = $database->getConnection();
 $inventory = new Inventory($db);
-
-// DITO ANG IDINAGDAG PARA GUMANA ANG DROPDOWN:
 $eggs = $inventory->getAllEggs();
 
-// --- YOUR SALES PROCESSING LOGIC HERE ---
-// Example: 
-// $egg_id = $_POST['egg_id'];
-// $sale_saved_to_db = $inventory->processSale($egg_id, $_POST['quantity']);
-// $egg_type = $inventory->getEggType($egg_id); 
-// ----------------------------------------
 
 if (isset($sale_saved_to_db) && $sale_saved_to_db) {
     $customers = $db->query("SELECT email FROM customers WHERE receive_updates = 1")->fetchAll(PDO::FETCH_ASSOC);
@@ -46,7 +38,6 @@ if (isset($sale_saved_to_db) && $sale_saved_to_db) {
             $mail->send();
         }
     } catch (Exception $e) { 
-        // Silent catch
     }
 
     header("Location: index.php");
