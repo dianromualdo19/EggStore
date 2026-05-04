@@ -1,0 +1,114 @@
+:root { 
+    --sidebar: #2c3e50; 
+    --dark-bg: #1a252f; 
+    --accent-orange: #f39c12; 
+    --accent-blue: #3498db; 
+    --accent-purple: #9b59b6; 
+    --bg: #f8f9fa; 
+}
+
+body { 
+    margin: 0; 
+    display: flex; 
+    font-family: 'Segoe UI', sans-serif; 
+    background: var(--bg); 
+}
+
+/* Sidebar */
+.sidebar { 
+    width: 260px; 
+    background: var(--sidebar); 
+    height: 100vh; 
+    color: white; 
+    position: fixed; 
+}
+
+.sidebar-header { 
+    padding: 30px 20px; 
+    font-size: 1.6rem; 
+    font-weight: bold; 
+    background: var(--dark-bg); 
+    text-align: center; 
+}
+
+.nav-links { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.nav-links a { 
+    color: #bdc3c7; 
+    text-decoration: none; 
+    display: block; 
+    padding: 18px 25px; 
+    border-bottom: 1px solid #34495e; 
+}
+
+.nav-links a:hover { 
+    background: #34495e; 
+    color: white; 
+}
+
+.nav-links i { 
+    margin-right: 15px; 
+    color: var(--accent-orange); 
+    width: 20px; 
+}
+
+/* Main Content */
+.main-content { 
+    margin-left: 260px; 
+    padding: 40px; 
+    width: calc(100% - 260px); 
+}
+
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+    margin-bottom: 40px; 
+}
+
+.modern-card { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    border-bottom: 5px solid transparent; 
+}
+
+/* Card Variations */
+.cash-card { border-color: var(--accent-orange); } 
+.cash-card .card-icon { background: var(--accent-orange); }
+.utang-card { border-color: var(--accent-blue); } 
+.utang-card .card-icon { background: var(--accent-blue); }
+.prod-card { border-color: var(--accent-purple); } 
+.prod-card .card-icon { background: var(--accent-purple); }
+
+/* Table and Badges */
+.table-container { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+}
+
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 15px; color: #95a5a6; border-bottom: 2px solid #eee; font-size: 0.8rem; }
+td { padding: 15px; border-bottom: 1px solid #eee; }
+
+.badge { padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; }
+.badge-GOOD { background: #e6f4ea; color: #27ae60; }
+.badge-LOW { background: #fff4e5; color: #f39c12; }
+.badge-CRITICAL { background: #fce8e8; color: #e74c3c; }
+
+/* Edit Inputs */
+.qty-input, .status-select { 
+    padding: 5px; 
+    border: 1px solid var(--accent-orange); 
+    border-radius: 4px; 
+}
