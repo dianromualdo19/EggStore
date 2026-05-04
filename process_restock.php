@@ -17,13 +17,10 @@ if (isset($_POST['egg_id'])) {
     $trays = $_POST['trays'];
     $cost = $_POST['cost'];
 
-    // 1. I-save muna sa database
     $result = $sales->recordPurchase($egg_id, $trays, $cost);
 
-    // 2. Kung success, kunin ang pangalan ng itlog at mag-email
     if ($result == "success") {
         try {
-            // KUNIN ANG PANGALAN NG ITLOG SA DATABASE
             $stmt = $db->prepare("SELECT type FROM eggs WHERE id = ?");
             $stmt->execute([$egg_id]);
             $egg_data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -46,12 +43,11 @@ if (isset($_POST['egg_id'])) {
                 $mail->addAddress($customer['email']);
                 $mail->isHTML(true);
                 $mail->Subject = 'New Restock Alert!';
-                // DITO NA NATIN NILAGAY ANG PANGALAN NG ITLOG
+            
                 $mail->Body = "Good news! We have restocked: <b>" . htmlspecialchars($product_name) . "</b>. You can now place your orders.";
                 $mail->send();
             }
         } catch (Exception $e) { 
-            // Silent error handling
         }
     }
 
