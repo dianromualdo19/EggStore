@@ -191,7 +191,7 @@ $todays_cash = $sales->getTodaysTotal();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 $(document).ready(function() {
-    // 1. Filter Logic
+
     $('#typeFilter').on('change', function() {
         const selected = $(this).val();
         $('.egg-row').each(function() {
@@ -200,13 +200,12 @@ $(document).ready(function() {
         });
     });
 
-    // 2. Modal Data
+
     $('.edit-btn').on('click', function() {
         $('#edit-id').val($(this).data('id'));
         $('#edit-trays').val($(this).data('trays'));
     });
 
-    // 3. Chart - FIXED Labels (S, M, L etc) and Colors
     const ctx = document.getElementById('liveEggChart').getContext('2d');
     const labels = [];
     const chartData = [];
@@ -237,8 +236,7 @@ $(document).ready(function() {
             plugins: { legend: { display: false } } 
         }
     });
-
-    // 4. Clear History
+    
     $('#clearHistory').on('click', function() {
         if(confirm("Clear history?")) {
             $.post('delete_history.php', function(res) { if(res.trim()==="success") window.location.reload(); });
