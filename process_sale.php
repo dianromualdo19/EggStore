@@ -15,13 +15,11 @@ $sales = new Sales($db);
 $result = "error"; 
 
 if (isset($_POST['egg_id'])) {
-    // 1. Record the sale
     $result = $sales->recordSale($_POST['egg_id'], $_POST['trays'], $_POST['price']);
 
-    // 2. If success, check stock level for alerts
     if ($result == "success") {
         try {
-            // Kunin ang current stock level ng product na binenta
+            
             $stmt = $db->prepare("SELECT type, trays FROM eggs WHERE id = ?");
             $stmt->execute([$_POST['egg_id']]);
             $egg_info = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -30,7 +28,7 @@ if (isset($_POST['egg_id'])) {
             $current_stock = $egg_info['trays'];
             $product_name = $egg_info['type'];
 
-            // 3. Mag-send lang ng email KUNG mababa na o ubos na ang stock
+        
             if ($current_stock <= $threshold) {
                 $mail = new PHPMailer(true);
                 $mail->isSMTP();
