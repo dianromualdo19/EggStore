@@ -1,6 +1,4 @@
-// notification_logs.php
 <?php
-// ... database connection code ...
 $logs = $db->query("SELECT * FROM email_logs ORDER BY sent_at DESC LIMIT 10")->fetchAll();
 ?>
 <table class="table">
